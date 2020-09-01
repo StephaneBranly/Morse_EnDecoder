@@ -48,10 +48,17 @@ export default class App extends React.Component<AppProps, AppStates> {
     return (
       <Container>
         <HeaderApp />
-        {/* <About /> */}
-        {/* <Container>
-          <Text>Morse EnDecoder ! Welcome to the app !</Text>
-        </Container> */}
+        {screen === "encode" && (
+          <Container>
+            <Text>Encode view</Text>
+          </Container>
+        )}
+        {screen === "decode" && (
+          <Container>
+            <Text>Decode view</Text>
+          </Container>
+        )}
+        {screen === "about" && <About />}
         <FooterApp screen={screen} changeScreen={this.changeScreen} />
       </Container>
     );
