@@ -5,6 +5,7 @@ import * as Font from "expo-font";
 import FooterApp from "./src/components/footer";
 import HeaderApp from "./src/components/header";
 import About from "./src/components/about";
+import Encode from "./src/components/encode";
 import { Ionicons } from "@expo/vector-icons";
 
 // import getTheme from "./native-base-theme/components";
@@ -51,11 +52,7 @@ export default class App extends React.Component<AppProps, AppStates> {
       // <StyleProvider style={getTheme(material)}>
       <Container>
         <HeaderApp />
-        {screen === "encode" && (
-          <Container>
-            <Text>Encode view</Text>
-          </Container>
-        )}
+        {screen === "encode" && <Encode />}
         {screen === "decode" && (
           <Container>
             <Text>Decode view</Text>
