@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Header,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Icon,
-  Text,
-} from "native-base";
+import { Footer, FooterTab, Button, Icon, Text } from "native-base";
 
 export default class FooterApp extends Component {
   render() {
@@ -19,12 +10,12 @@ export default class FooterApp extends Component {
             <Icon type="EvilIcons" name="lock" />
             <Text>Encode</Text>
           </Button>
-          <Button vertical>
-            <Icon type="EvilIcons" active name="unlock" />
+          <Button vertical active>
+            <Icon type="EvilIcons" name="unlock" />
             <Text>Decode</Text>
           </Button>
 
-          <Button vertical active>
+          <Button vertical>
             <Icon type="Ionicons" name="information-circle-outline" />
             <Text>About</Text>
           </Button>

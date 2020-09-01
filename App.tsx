@@ -1,8 +1,9 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Text } from "native-base";
+import { Container, Text, Header, Title } from "native-base";
 import * as Font from "expo-font";
-import FooterApp from "./components/footer";
+import FooterApp from "./src/components/footer";
+import HeaderApp from "./src/components/header";
 import { Ionicons } from "@expo/vector-icons";
 
 export interface AppProps {}
@@ -33,6 +34,7 @@ export default class App extends React.Component<AppProps, AppStates> {
 
     return (
       <Container>
+        <HeaderApp />
         <Container>
           <Text>Morse EnDecoder ! Welcome to the app !</Text>
         </Container>

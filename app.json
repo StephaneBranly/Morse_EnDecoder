@@ -13,14 +13,25 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "androidStatusBarColor": "#fabea7",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#fabea7"
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "android": {
+      "package": "com.stephane_branly.morse_endecoder",
+      "permissions": [],
+      "versionCode": 4,
+      "config": {}
+    },
+    "description": "React native app, encode and decode messages with this App !",
+    "githubUrl": "https://github.com/StephaneBranly/Morse_EnDecoder"
   }
 }
