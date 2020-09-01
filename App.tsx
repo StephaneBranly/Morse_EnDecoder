@@ -10,12 +10,14 @@ import { Ionicons } from "@expo/vector-icons";
 export interface AppProps {}
 export interface AppStates {
   isReady: boolean;
+  screen: string;
 }
 export default class App extends React.Component<AppProps, AppStates> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
       isReady: false,
+      screen: "",
     };
   }
 
@@ -25,22 +27,32 @@ export default class App extends React.Component<AppProps, AppStates> {
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       ...Ionicons.font,
     });
-    this.setState({ isReady: true });
+    this.setState({ isReady: true, screen: "about" });
   }
 
+  changeScreen: any = (screen: string) => {
+    this.setState({ screen: screen });
+    console.log("Call functon with " + screen);
+  };
+
   render() {
-    if (!this.state.isReady) {
+    const { isReady, screen } = this.state;
+    if (!isReady) {
+      return <AppLoading />;
+    }
+
+    if (!["about", "encode", "decode"].includes(screen)) {
       return <AppLoading />;
     }
 
     return (
       <Container>
         <HeaderApp />
-        <About />
+        {/* <About /> */}
         {/* <Container>
           <Text>Morse EnDecoder ! Welcome to the app !</Text>
         </Container> */}
-        <FooterApp />
+        <FooterApp screen={screen} changeScreen={this.changeScreen} />
       </Container>
     );
   }
