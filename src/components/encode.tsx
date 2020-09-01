@@ -8,31 +8,61 @@ import {
   Text,
   Grid,
   Col,
-  Row,
   Card,
   CardItem,
   Body,
+  Fab,
+  Separator,
 } from "native-base";
 
-export default class Encode extends Component {
+export interface EncodeProps {
+  changeScreen: any;
+}
+
+export default class Encode extends Component<EncodeProps> {
   render() {
     return (
       <Content padder>
+        <Content padder>
+          <Text>Encode</Text>
+        </Content>
+
+        <Grid>
+          <Col>
+            <Button></Button>
+          </Col>
+        </Grid>
+
         <Form>
           <Textarea
             rowSpan={8}
             bordered
             placeholder="Write here"
             underline={false}
+            returnKeyType="done"
+            multiline={true}
+            blurOnSubmit={true}
           />
         </Form>
 
-        <Content padder>
-          <Button iconLeft block>
-            <Icon name="key" />
-            <Text>Encode</Text>
-          </Button>
-        </Content>
+        <Grid>
+          <Col>
+            <Button iconLeft block>
+              <Icon name="key" />
+              <Text>Encode</Text>
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              iconLeft
+              block
+              onPress={() => this.props.changeScreen("decode")}
+            >
+              <Icon type="MaterialIcons" name="import-export" />
+              <Text>Switch</Text>
+            </Button>
+          </Col>
+        </Grid>
 
         <Card>
           <CardItem>
@@ -42,12 +72,14 @@ export default class Encode extends Component {
           </CardItem>
         </Card>
 
-        <Content padder>
-          <Button iconLeft>
-            <Icon name="copy" />
-            <Text>Copy</Text>
-          </Button>
-        </Content>
+        <Grid>
+          <Col>
+            <Button iconLeft>
+              <Icon type="MaterialIcons" name="content-copy" />
+              <Text>Copy</Text>
+            </Button>
+          </Col>
+        </Grid>
       </Content>
     );
   }
