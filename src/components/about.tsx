@@ -26,7 +26,7 @@ export default class About extends Component<AboutProps> {
   render() {
     return (
       <Container>
-        <HeaderApp changeScreen={this.props.changeScreen} />
+        <HeaderApp changeScreen={this.props.changeScreen} backButton={true} />
 
         <Content>
           <List>

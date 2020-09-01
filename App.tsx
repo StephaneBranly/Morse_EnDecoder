@@ -2,8 +2,6 @@ import React from "react";
 import { AppLoading } from "expo";
 import { Container, Text, StyleProvider, Fab, Icon } from "native-base";
 import * as Font from "expo-font";
-import FooterApp from "./src/components/footer";
-import HeaderApp from "./src/components/header";
 import About from "./src/components/about";
 import Encode from "./src/components/encode";
 import Decode from "./src/components/decode";
@@ -67,7 +65,6 @@ export default class App extends React.Component<AppProps, AppStates> {
             <Icon type="MaterialIcons" name="info" />
           </Fab>
         )}
-        {/* <FooterApp screen={screen} changeScreen={this.changeScreen} /> */}
       </Container>
       // </StyleProvider>
     );
