@@ -4,6 +4,7 @@ import { Container, Text, Header, Title } from "native-base";
 import * as Font from "expo-font";
 import FooterApp from "./src/components/footer";
 import HeaderApp from "./src/components/header";
+import About from "./src/components/about";
 import { Ionicons } from "@expo/vector-icons";
 
 export interface AppProps {}
@@ -35,9 +36,10 @@ export default class App extends React.Component<AppProps, AppStates> {
     return (
       <Container>
         <HeaderApp />
-        <Container>
+        <About />
+        {/* <Container>
           <Text>Morse EnDecoder ! Welcome to the app !</Text>
-        </Container>
+        </Container> */}
         <FooterApp />
       </Container>
     );
