@@ -7,8 +7,10 @@ import Encode from "./src/components/encode";
 import Decode from "./src/components/decode";
 import { Ionicons } from "@expo/vector-icons";
 
-// import getTheme from "./native-base-theme/components";
-// import material from "./native-base-theme/variables/material";
+// @ts-ignore
+import getTheme from "./native-base-theme/components";
+// @ts-ignore
+import material from "./native-base-theme/variables/material";
 
 export interface AppProps {}
 export interface AppStates {
@@ -48,25 +50,25 @@ export default class App extends React.Component<AppProps, AppStates> {
     }
 
     return (
-      // <StyleProvider style={getTheme(material)}>
-      <Container>
-        {screen === "encode" && <Encode changeScreen={this.changeScreen} />}
-        {screen === "decode" && <Decode changeScreen={this.changeScreen} />}
-        {screen === "about" ? (
-          <About changeScreen={this.changeScreen} />
-        ) : (
-          <Fab
-            direction="up"
-            containerStyle={{}}
-            style={{ backgroundColor: "#5067FF" }}
-            position="bottomRight"
-            onPress={() => this.changeScreen("about")}
-          >
-            <Icon type="MaterialIcons" name="info" />
-          </Fab>
-        )}
-      </Container>
-      // </StyleProvider>
+      <StyleProvider style={getTheme(material)}>
+        <Container>
+          {screen === "encode" && <Encode changeScreen={this.changeScreen} />}
+          {screen === "decode" && <Decode changeScreen={this.changeScreen} />}
+          {screen === "about" ? (
+            <About changeScreen={this.changeScreen} />
+          ) : (
+            <Fab
+              direction="up"
+              containerStyle={{}}
+              style={{ backgroundColor: "#5067FF" }}
+              position="bottomRight"
+              onPress={() => this.changeScreen("about")}
+            >
+              <Icon type="MaterialIcons" name="info" />
+            </Fab>
+          )}
+        </Container>
+      </StyleProvider>
     );
   }
 }

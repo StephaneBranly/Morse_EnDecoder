@@ -13,6 +13,7 @@ import {
   Body,
 } from "native-base";
 import HeaderApp from "./header";
+// @ts-ignore
 import get from "lodash/get";
 
 export interface DecodeProps {
