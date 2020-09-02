@@ -13,10 +13,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "androidStatusBarColor": "#fabea7",
+    "androidStatusBarColor": "#679b9b",
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#fabea7"
+      "backgroundColor": "#679b9b"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
