@@ -15,16 +15,36 @@ import {
   Separator,
 } from "native-base";
 import HeaderApp from "./header";
+import get from "lodash/get";
 
 export interface EncodeProps {
   changeScreen: any;
 }
 
-const encode = () => {
-  console.log("encode");
-};
+export interface EncodeStates {
+  text: string;
+  textEncoded: string;
+}
 
-export default class Encode extends Component<EncodeProps> {
+export default class Encode extends Component<EncodeProps, EncodeStates> {
+  constructor(props: any) {
+    super(props);
+    this.state = { text: "", textEncoded: "" };
+  }
+  textEncoded = ".-- .-. .. - .     .... . .-. .";
+
+  encode = () => {
+    console.log("encode :");
+    console.log(this.state.text);
+    this.setState({ textEncoded: this.state.text });
+  };
+
+  onChange = (e: any) => {
+    e.preventDefault();
+    const newText = get(e, "nativeEvent.text", "");
+    this.setState({ text: newText });
+  };
+
   render() {
     return (
       <Content>
@@ -50,13 +70,14 @@ export default class Encode extends Component<EncodeProps> {
               returnKeyType="done"
               multiline={true}
               blurOnSubmit={true}
-              onSubmitEditing={encode}
+              onSubmitEditing={this.encode}
+              onChange={this.onChange}
             />
           </Form>
 
           <Grid>
             <Col>
-              <Button iconLeft block onPress={() => encode()}>
+              <Button iconLeft block onPress={() => this.encode()}>
                 <Icon name="key" />
                 <Text>Encode</Text>
               </Button>
@@ -76,7 +97,7 @@ export default class Encode extends Component<EncodeProps> {
           <Card>
             <CardItem>
               <Body>
-                <Text>.-- .-. .. - . / .... . .-. .</Text>
+                <Text>{this.state.textEncoded}</Text>
               </Body>
             </CardItem>
           </Card>

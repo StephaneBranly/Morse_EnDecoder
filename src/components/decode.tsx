@@ -13,16 +13,36 @@ import {
   Body,
 } from "native-base";
 import HeaderApp from "./header";
+import get from "lodash/get";
 
 export interface DecodeProps {
   changeScreen: any;
 }
 
-const decode = () => {
-  console.log("decode");
-};
+export interface DecodeStates {
+  text: string;
+  textDecoded: string;
+}
 
-export default class Decode extends Component<DecodeProps> {
+export default class Decode extends Component<DecodeProps, DecodeStates> {
+  constructor(props: any) {
+    super(props);
+    this.state = { text: "", textDecoded: "" };
+  }
+  textEncoded = "Write here";
+
+  decode = () => {
+    console.log("decode :");
+    console.log(this.state.text);
+    this.setState({ textDecoded: this.state.text });
+  };
+
+  onChange = (e: any) => {
+    e.preventDefault();
+    const newText = get(e, "nativeEvent.text", "");
+    this.setState({ text: newText });
+  };
+
   render() {
     return (
       <Content>
@@ -63,13 +83,14 @@ export default class Decode extends Component<DecodeProps> {
               returnKeyType="done"
               multiline={true}
               blurOnSubmit={true}
-              onSubmitEditing={decode}
+              onSubmitEditing={this.decode}
+              onChange={this.onChange}
             />
           </Form>
 
           <Grid>
             <Col>
-              <Button iconLeft block onPress={() => decode()}>
+              <Button iconLeft block onPress={() => this.decode()}>
                 <Icon name="key" />
                 <Text>Decode</Text>
               </Button>
@@ -89,7 +110,7 @@ export default class Decode extends Component<DecodeProps> {
           <Card>
             <CardItem>
               <Body>
-                <Text>Write here</Text>
+                <Text>{this.state.textDecoded}</Text>
               </Body>
             </CardItem>
           </Card>
