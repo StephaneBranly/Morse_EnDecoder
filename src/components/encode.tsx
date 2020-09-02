@@ -103,7 +103,7 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
             </CardItem>
           </Card>
 
-          <Grid>
+          <Grid style={{ alignItems: "center" }}>
             <Col>
               <Button iconLeft>
                 <Icon type="MaterialIcons" name="content-copy" />

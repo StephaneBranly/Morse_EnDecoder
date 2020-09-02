@@ -52,7 +52,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
           <Content padder>
             <Text>Decode</Text>
           </Content>
-          <Grid>
+          <Grid style={{ alignItems: "center" }}>
             <Col>
               <Button>
                 <Icon type="MaterialIcons" name="lens"></Icon>
@@ -116,7 +116,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
             </CardItem>
           </Card>
 
-          <Grid>
+          <Grid style={{ alignItems: "center" }}>
             <Col>
               <Button iconLeft>
                 <Icon type="MaterialIcons" name="content-copy" />

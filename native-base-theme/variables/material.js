@@ -123,7 +123,7 @@ export default {
   checkboxTickColor: "#fff",
 
   // Color
-  brandPrimary: "#FABEA7",
+  brandPrimary: "#679b9b",
   brandInfo: "#62B1F6",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
@@ -157,7 +157,7 @@ export default {
 
   // Footer
   footerHeight: 55,
-  footerDefaultBg: "#FABEA7",
+  footerDefaultBg: "#679b9b",
   footerPaddingBottom: 0,
 
   // FooterTab
@@ -166,18 +166,18 @@ export default {
   activeTab: "#fff",
   sTabBarActiveTextColor: "#007aff",
   tabBarActiveTextColor: "#fff",
-  tabActiveBgColor: "#FABEA7",
+  tabActiveBgColor: "#679b9b",
 
   // Header
   toolbarBtnColor: "#fff",
-  toolbarDefaultBg: "#fabea7",
+  toolbarDefaultBg: "#679b9b",
   toolbarHeight: 56,
   toolbarSearchIconSize: 23,
   toolbarInputColor: "#fff",
   searchBarHeight: platform === PLATFORM.IOS ? 30 : 40,
   searchBarInputHeight: platform === PLATFORM.IOS ? 40 : 50,
   toolbarBtnTextColor: "#fff",
-  toolbarDefaultBorder: "#FABEA7",
+  toolbarDefaultBorder: "#679b9b",
   iosStatusbar: "light-content",
   get statusBarColor() {
     return color(this.toolbarDefaultBg).darken(0.2).hex();
@@ -219,7 +219,7 @@ export default {
   listItemPadding: 12,
   listNoteColor: "#808080",
   listNoteSize: 13,
-  listItemSelected: "#FABEA7",
+  listItemSelected: "#679b9b",
 
   // Progress Bar
   defaultProgressColor: "#E4202D",
@@ -227,26 +227,26 @@ export default {
 
   // Radio Button
   radioBtnSize: 23,
-  radioSelectedColorAndroid: "#FABEA7",
+  radioSelectedColorAndroid: "#679b9b",
   radioBtnLineHeight: 24,
   get radioColor() {
     return this.brandPrimary;
   },
 
   // Segment
-  segmentBackgroundColor: "#FABEA7",
+  segmentBackgroundColor: "#679b9b",
   segmentActiveBackgroundColor: "#fff",
   segmentTextColor: "#fff",
-  segmentActiveTextColor: "#FABEA7",
+  segmentActiveTextColor: "#679b9b",
   segmentBorderColor: "#fff",
-  segmentBorderColorMain: "#FABEA7",
+  segmentBorderColorMain: "#679b9b",
 
   // Spinner
   defaultSpinnerColor: "#45D56E",
   inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: "#FABEA7",
+  tabDefaultBg: "#679b9b",
   topTabBarTextColor: "#b3c7f9",
   topTabBarActiveTextColor: "#fff",
   topTabBarBorderColor: "#fff",
