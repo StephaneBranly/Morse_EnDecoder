@@ -1,14 +1,16 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Text, StyleProvider } from "native-base";
+import { Container, Text, StyleProvider, Fab, Icon } from "native-base";
 import * as Font from "expo-font";
-import FooterApp from "./src/components/footer";
-import HeaderApp from "./src/components/header";
 import About from "./src/components/about";
+import Encode from "./src/components/encode";
+import Decode from "./src/components/decode";
 import { Ionicons } from "@expo/vector-icons";
 
-// import getTheme from "./native-base-theme/components";
-// import material from "./native-base-theme/variables/material";
+// @ts-ignore
+import getTheme from "./native-base-theme/components";
+// @ts-ignore
+import material from "./native-base-theme/variables/material";
 
 export interface AppProps {}
 export interface AppStates {
@@ -30,7 +32,7 @@ export default class App extends React.Component<AppProps, AppStates> {
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       ...Ionicons.font,
     });
-    this.setState({ isReady: true, screen: "about" });
+    this.setState({ isReady: true, screen: "decode" });
   }
 
   changeScreen: any = (screen: string) => {
@@ -48,23 +50,25 @@ export default class App extends React.Component<AppProps, AppStates> {
     }
 
     return (
-      // <StyleProvider style={getTheme(material)}>
-      <Container>
-        <HeaderApp />
-        {screen === "encode" && (
-          <Container>
-            <Text>Encode view</Text>
-          </Container>
-        )}
-        {screen === "decode" && (
-          <Container>
-            <Text>Decode view</Text>
-          </Container>
-        )}
-        {screen === "about" && <About />}
-        <FooterApp screen={screen} changeScreen={this.changeScreen} />
-      </Container>
-      // </StyleProvider>
+      <StyleProvider style={getTheme(material)}>
+        <Container>
+          {screen === "encode" && <Encode changeScreen={this.changeScreen} />}
+          {screen === "decode" && <Decode changeScreen={this.changeScreen} />}
+          {screen === "about" ? (
+            <About changeScreen={this.changeScreen} />
+          ) : (
+            <Fab
+              direction="up"
+              containerStyle={{}}
+              style={{ backgroundColor: "#5067FF" }}
+              position="bottomRight"
+              onPress={() => this.changeScreen("about")}
+            >
+              <Icon type="MaterialIcons" name="info" />
+            </Fab>
+          )}
+        </Container>
+      </StyleProvider>
     );
   }
 }

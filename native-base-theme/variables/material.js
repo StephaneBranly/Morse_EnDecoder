@@ -123,7 +123,7 @@ export default {
   checkboxTickColor: "#fff",
 
   // Color
-  brandPrimary: "#3F51B5",
+  brandPrimary: "#FABEA7",
   brandInfo: "#62B1F6",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
@@ -157,7 +157,7 @@ export default {
 
   // Footer
   footerHeight: 55,
-  footerDefaultBg: "#3F51B5",
+  footerDefaultBg: "#FABEA7",
   footerPaddingBottom: 0,
 
   // FooterTab
@@ -166,7 +166,7 @@ export default {
   activeTab: "#fff",
   sTabBarActiveTextColor: "#007aff",
   tabBarActiveTextColor: "#fff",
-  tabActiveBgColor: "#3F51B5",
+  tabActiveBgColor: "#FABEA7",
 
   // Header
   toolbarBtnColor: "#fff",
@@ -177,7 +177,7 @@ export default {
   searchBarHeight: platform === PLATFORM.IOS ? 30 : 40,
   searchBarInputHeight: platform === PLATFORM.IOS ? 40 : 50,
   toolbarBtnTextColor: "#fff",
-  toolbarDefaultBorder: "#3F51B5",
+  toolbarDefaultBorder: "#FABEA7",
   iosStatusbar: "light-content",
   get statusBarColor() {
     return color(this.toolbarDefaultBg).darken(0.2).hex();
@@ -219,7 +219,7 @@ export default {
   listItemPadding: 12,
   listNoteColor: "#808080",
   listNoteSize: 13,
-  listItemSelected: "#3F51B5",
+  listItemSelected: "#FABEA7",
 
   // Progress Bar
   defaultProgressColor: "#E4202D",
@@ -227,26 +227,26 @@ export default {
 
   // Radio Button
   radioBtnSize: 23,
-  radioSelectedColorAndroid: "#3F51B5",
+  radioSelectedColorAndroid: "#FABEA7",
   radioBtnLineHeight: 24,
   get radioColor() {
     return this.brandPrimary;
   },
 
   // Segment
-  segmentBackgroundColor: "#3F51B5",
+  segmentBackgroundColor: "#FABEA7",
   segmentActiveBackgroundColor: "#fff",
   segmentTextColor: "#fff",
-  segmentActiveTextColor: "#3F51B5",
+  segmentActiveTextColor: "#FABEA7",
   segmentBorderColor: "#fff",
-  segmentBorderColorMain: "#3F51B5",
+  segmentBorderColorMain: "#FABEA7",
 
   // Spinner
   defaultSpinnerColor: "#45D56E",
   inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: "#3F51B5",
+  tabDefaultBg: "#FABEA7",
   topTabBarTextColor: "#b3c7f9",
   topTabBarActiveTextColor: "#fff",
   topTabBarBorderColor: "#fff",

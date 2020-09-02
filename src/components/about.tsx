@@ -14,14 +14,20 @@ import {
 } from "native-base";
 
 import appJson from "../../app.json";
+import HeaderApp from "./header";
 
 var version = appJson.expo.version;
 var github = appJson.expo.githubUrl;
 
-export default class About extends Component {
+export interface AboutProps {
+  changeScreen: any;
+}
+export default class About extends Component<AboutProps> {
   render() {
     return (
       <Container>
+        <HeaderApp changeScreen={this.props.changeScreen} backButton={true} />
+
         <Content>
           <List>
             <Separator bordered>
