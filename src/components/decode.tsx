@@ -40,10 +40,20 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
 
   onChange = (e: any) => {
     e.preventDefault();
-    const newText = get(e, "nativeEvent.text", "");
+    let newText = get(e, "nativeEvent.text", "");
     this.setState({ text: newText });
   };
 
+  write = (text: any) => {
+    this.setState({
+      text: `${this.state.text}${text}`,
+    });
+  };
+  delete = () => {
+    this.setState({
+      text: `${this.state.text.slice(0, -1)}`,
+    });
+  };
   render() {
     return (
       <Content>
@@ -54,22 +64,22 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
           </Content>
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button>
+              <Button onPress={() => this.write(".")}>
                 <Icon type="MaterialIcons" name="lens"></Icon>
               </Button>
             </Col>
             <Col>
-              <Button>
+              <Button onPress={() => this.write("-")}>
                 <Icon type="MaterialIcons" name="remove"></Icon>
               </Button>
             </Col>
             <Col>
-              <Button>
+              <Button onPress={() => this.write(" ")}>
                 <Icon type="MaterialIcons" name="space-bar"></Icon>
               </Button>
             </Col>
             <Col>
-              <Button>
+              <Button onPress={() => this.delete()}>
                 <Icon type="MaterialIcons" name="backspace"></Icon>
               </Button>
             </Col>
@@ -86,6 +96,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
               blurOnSubmit={true}
               onSubmitEditing={this.decode}
               onChange={this.onChange}
+              value={this.state.text}
             />
           </Form>
 
