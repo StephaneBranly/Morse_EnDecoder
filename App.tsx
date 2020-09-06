@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Text, StyleProvider, Fab, Icon } from "native-base";
+import { Container, Text, StyleProvider, Fab, Icon, Root } from "native-base";
 import * as Font from "expo-font";
 import About from "./src/components/about";
 import Encode from "./src/components/encode";
@@ -50,25 +50,27 @@ export default class App extends React.Component<AppProps, AppStates> {
     }
 
     return (
-      <StyleProvider style={getTheme(material)}>
-        <Container>
-          {screen === "encode" && <Encode changeScreen={this.changeScreen} />}
-          {screen === "decode" && <Decode changeScreen={this.changeScreen} />}
-          {screen === "about" ? (
-            <About changeScreen={this.changeScreen} />
-          ) : (
-            <Fab
-              direction="up"
-              containerStyle={{}}
-              style={{ backgroundColor: "#5067FF" }}
-              position="bottomRight"
-              onPress={() => this.changeScreen("about")}
-            >
-              <Icon type="MaterialIcons" name="info" />
-            </Fab>
-          )}
-        </Container>
-      </StyleProvider>
+      <Root>
+        <StyleProvider style={getTheme(material)}>
+          <Container>
+            {screen === "encode" && <Encode changeScreen={this.changeScreen} />}
+            {screen === "decode" && <Decode changeScreen={this.changeScreen} />}
+            {screen === "about" ? (
+              <About changeScreen={this.changeScreen} />
+            ) : (
+              <Fab
+                direction="up"
+                containerStyle={{}}
+                style={{ backgroundColor: "#5067FF" }}
+                position="bottomRight"
+                onPress={() => this.changeScreen("about")}
+              >
+                <Icon type="MaterialIcons" name="info" />
+              </Fab>
+            )}
+          </Container>
+        </StyleProvider>
+      </Root>
     );
   }
 }

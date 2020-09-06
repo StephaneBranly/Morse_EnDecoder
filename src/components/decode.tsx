@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Clipboard } from "react-native";
 import {
   Form,
   Content,
@@ -11,6 +12,7 @@ import {
   Card,
   CardItem,
   Body,
+  Toast,
 } from "native-base";
 import HeaderApp from "./header";
 // @ts-ignore
@@ -52,6 +54,16 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
     });
     textWork = textWork.charAt(0).toUpperCase() + textWork.slice(1);
     this.setState({ textDecoded: textWork });
+  };
+
+  copy = () => {
+    Clipboard.setString(this.state.textDecoded);
+    Toast.show({
+      text: "Text copied to clipboard !",
+      buttonText: "Ok",
+      type: "success",
+      duration: 1500,
+    });
   };
 
   onChange = (e: any) => {
@@ -145,7 +157,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
 
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button iconLeft>
+              <Button iconLeft onPress={() => this.copy()}>
                 <Icon type="MaterialIcons" name="content-copy" />
                 <Text>Copy</Text>
               </Button>
