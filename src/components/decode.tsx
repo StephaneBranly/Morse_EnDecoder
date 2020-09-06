@@ -15,6 +15,7 @@ import {
 import HeaderApp from "./header";
 // @ts-ignore
 import get from "lodash/get";
+import { CODE } from "../vars/code";
 
 export interface DecodeProps {
   changeScreen: any;
@@ -35,7 +36,18 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
   decode = () => {
     console.log("decode :");
     console.log(this.state.text);
-    this.setState({ textDecoded: this.state.text });
+    let textWork = this.state.text + " ";
+    let textWorkLetters = textWork.split(" ");
+    textWork = "";
+    textWorkLetters.forEach((letter) => {
+      if (letter == "") textWork += " ";
+      else
+        for (const char of CODE) {
+          if (char[1] == letter) textWork += char[0];
+        }
+    });
+
+    this.setState({ textDecoded: textWork });
   };
 
   onChange = (e: any) => {
@@ -89,7 +101,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
             <Textarea
               rowSpan={8}
               bordered
-              placeholder=".-- .-. .. - . / .... . .-. ."
+              placeholder=".-- .-. .. - .   .... . .-. ."
               underline={false}
               returnKeyType="done"
               multiline={true}

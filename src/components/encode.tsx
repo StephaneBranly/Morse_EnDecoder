@@ -39,7 +39,13 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
   encode = () => {
     console.log("encode :");
     console.log(this.state.text);
-    this.setState({ textEncoded: this.state.text });
+    let textWork = this.state.text;
+    for (const char of CODE) {
+      var replace = char[0];
+      var re = new RegExp(replace, "g");
+      textWork = textWork.replace(re, char[1] + " ");
+    }
+    this.setState({ textEncoded: textWork });
   };
 
   onChange = (e: any) => {
