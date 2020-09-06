@@ -50,7 +50,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
           if (char[1] == letter) textWork += char[0];
         }
     });
-
+    textWork = textWork.charAt(0).toUpperCase() + textWork.slice(1);
     this.setState({ textDecoded: textWork });
   };
 
