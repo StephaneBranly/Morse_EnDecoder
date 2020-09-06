@@ -29,6 +29,25 @@ export interface EncodeStates {
   textEncoded: string;
 }
 
+function slugify(str: string) {
+  var map: any = {
+    " ": "-",
+    a: "á|à|ã|â|À|Á|Ã|Â",
+    e: "é|è|ê|É|È|Ê",
+    i: "í|ì|î|Í|Ì|Î",
+    o: "ó|ò|ô|õ|Ó|Ò|Ô|Õ",
+    u: "ú|ù|û|ü|Ú|Ù|Û|Ü",
+    c: "ç|Ç",
+    n: "ñ|Ñ",
+  };
+
+  for (var pattern in map) {
+    str = str.replace(new RegExp(map[pattern], "g"), pattern);
+  }
+
+  return str;
+}
+
 export default class Encode extends Component<EncodeProps, EncodeStates> {
   constructor(props: any) {
     super(props);
@@ -40,6 +59,7 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
     console.log("encode :");
     console.log(this.state.text);
     let textWork = this.state.text.toLowerCase();
+    textWork = slugify(textWork);
     for (const char of CODE) {
       var replace = char[0];
       var re = new RegExp(replace, "g");
