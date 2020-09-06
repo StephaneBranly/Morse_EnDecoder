@@ -80,7 +80,6 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
     Clipboard.setString(this.state.textEncoded);
     Toast.show({
       text: "Text copied to clipboard !",
-      buttonText: "Ok",
       type: "success",
       duration: 1500,
     });
