@@ -39,7 +39,7 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
   encode = () => {
     console.log("encode :");
     console.log(this.state.text);
-    let textWork = this.state.text;
+    let textWork = this.state.text.toLowerCase();
     for (const char of CODE) {
       var replace = char[0];
       var re = new RegExp(replace, "g");
