@@ -18,6 +18,8 @@ import HeaderApp from "./header";
 // @ts-ignore
 import get from "lodash/get";
 
+import { CODE } from "../vars/code";
+
 export interface EncodeProps {
   changeScreen: any;
 }
