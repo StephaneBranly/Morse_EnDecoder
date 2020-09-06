@@ -34,7 +34,7 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
     super(props);
     this.state = { text: "", textEncoded: "" };
   }
-  textEncoded = ".-- .-. .. - .     .... . .-. .";
+  textEncoded = "·−− ·−· ·· − ·     ···· · ·−· ·";
 
   encode = () => {
     console.log("encode :");

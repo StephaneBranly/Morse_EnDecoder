@@ -37,9 +37,13 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
     console.log("decode :");
     console.log(this.state.text);
     let textWork = this.state.text + " ";
+    textWork = textWork.replace(/\./g, "·");
+    textWork = textWork.replace(/-/g, "−");
+    console.log(textWork);
     let textWorkLetters = textWork.split(" ");
     textWork = "";
     textWorkLetters.forEach((letter) => {
+      console.log("new letter : " + letter);
       if (letter == "") textWork += " ";
       else
         for (const char of CODE) {
@@ -76,12 +80,12 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
           </Content>
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button onPress={() => this.write(".")}>
+              <Button onPress={() => this.write("·")}>
                 <Icon type="MaterialIcons" name="lens"></Icon>
               </Button>
             </Col>
             <Col>
-              <Button onPress={() => this.write("-")}>
+              <Button onPress={() => this.write("−")}>
                 <Icon type="MaterialIcons" name="remove"></Icon>
               </Button>
             </Col>
@@ -101,7 +105,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
             <Textarea
               rowSpan={8}
               bordered
-              placeholder=".-- .-. .. - .   .... . .-. ."
+              placeholder="·−− ·−· ·· − ·   ···· · ·−· ·"
               underline={false}
               returnKeyType="done"
               multiline={true}
