@@ -60,7 +60,6 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
     Clipboard.setString(this.state.textDecoded);
     Toast.show({
       text: "Text copied to clipboard !",
-      buttonText: "Ok",
       type: "success",
       duration: 1500,
     });
