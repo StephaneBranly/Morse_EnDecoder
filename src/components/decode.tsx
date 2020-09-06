@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Clipboard } from "react-native";
 import {
   Form,
   Content,
@@ -11,10 +12,12 @@ import {
   Card,
   CardItem,
   Body,
+  Toast,
 } from "native-base";
 import HeaderApp from "./header";
 // @ts-ignore
 import get from "lodash/get";
+import { CODE } from "../vars/code";
 
 export interface DecodeProps {
   changeScreen: any;
@@ -35,7 +38,32 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
   decode = () => {
     console.log("decode :");
     console.log(this.state.text);
-    this.setState({ textDecoded: this.state.text });
+    let textWork = this.state.text + " ";
+    textWork = textWork.replace(/\./g, "·");
+    textWork = textWork.replace(/-/g, "−");
+    console.log(textWork);
+    let textWorkLetters = textWork.split(" ");
+    textWork = "";
+    textWorkLetters.forEach((letter) => {
+      console.log("new letter : " + letter);
+      if (letter == "") textWork += " ";
+      else
+        for (const char of CODE) {
+          if (char[1] == letter) textWork += char[0];
+        }
+    });
+    textWork = textWork.charAt(0).toUpperCase() + textWork.slice(1);
+    this.setState({ textDecoded: textWork });
+  };
+
+  copy = () => {
+    Clipboard.setString(this.state.textDecoded);
+    Toast.show({
+      text: "Text copied to clipboard !",
+      buttonText: "Ok",
+      type: "success",
+      duration: 1500,
+    });
   };
 
   onChange = (e: any) => {
@@ -64,12 +92,12 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
           </Content>
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button onPress={() => this.write(".")}>
+              <Button onPress={() => this.write("·")}>
                 <Icon type="MaterialIcons" name="lens"></Icon>
               </Button>
             </Col>
             <Col>
-              <Button onPress={() => this.write("-")}>
+              <Button onPress={() => this.write("−")}>
                 <Icon type="MaterialIcons" name="remove"></Icon>
               </Button>
             </Col>
@@ -89,7 +117,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
             <Textarea
               rowSpan={8}
               bordered
-              placeholder=".-- .-. .. - . / .... . .-. ."
+              placeholder="·−− ·−· ·· − ·   ···· · ·−· ·"
               underline={false}
               returnKeyType="done"
               multiline={true}
@@ -129,7 +157,7 @@ export default class Decode extends Component<DecodeProps, DecodeStates> {
 
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button iconLeft>
+              <Button iconLeft onPress={() => this.copy()}>
                 <Icon type="MaterialIcons" name="content-copy" />
                 <Text>Copy</Text>
               </Button>

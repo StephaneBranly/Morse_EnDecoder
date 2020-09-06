@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Clipboard } from "react-native";
 import {
   Form,
   Content,
@@ -11,12 +12,14 @@ import {
   Card,
   CardItem,
   Body,
-  Fab,
+  Toast,
   Separator,
 } from "native-base";
 import HeaderApp from "./header";
 // @ts-ignore
 import get from "lodash/get";
+
+import { CODE } from "../vars/code";
 
 export interface EncodeProps {
   changeScreen: any;
@@ -25,25 +28,62 @@ export interface EncodeProps {
 export interface EncodeStates {
   text: string;
   textEncoded: string;
+  showToast: boolean;
+}
+
+function slugify(str: string) {
+  var map: any = {
+    " ": "-",
+    a: "á|à|ã|â|À|Á|Ã|Â",
+    e: "é|è|ê|É|È|Ê",
+    i: "í|ì|î|Í|Ì|Î",
+    o: "ó|ò|ô|õ|Ó|Ò|Ô|Õ",
+    u: "ú|ù|û|ü|Ú|Ù|Û|Ü",
+    c: "ç|Ç",
+    n: "ñ|Ñ",
+  };
+
+  for (var pattern in map) {
+    str = str.replace(new RegExp(map[pattern], "g"), pattern);
+  }
+
+  return str;
 }
 
 export default class Encode extends Component<EncodeProps, EncodeStates> {
   constructor(props: any) {
     super(props);
-    this.state = { text: "", textEncoded: "" };
+    this.state = { text: "", textEncoded: "", showToast: false };
   }
-  textEncoded = ".-- .-. .. - .     .... . .-. .";
+  textEncoded = "·−− ·−· ·· − ·     ···· · ·−· ·";
 
   encode = () => {
     console.log("encode :");
     console.log(this.state.text);
-    this.setState({ textEncoded: this.state.text });
+    let textWork = this.state.text.toLowerCase();
+    textWork = slugify(textWork);
+    for (const char of CODE) {
+      var replace = char[0];
+      var re = new RegExp(replace, "g");
+      textWork = textWork.replace(re, char[1] + " ");
+    }
+    this.setState({ textEncoded: textWork });
   };
 
   onChange = (e: any) => {
     e.preventDefault();
     const newText = get(e, "nativeEvent.text", "");
     this.setState({ text: newText });
+  };
+
+  copy = () => {
+    Clipboard.setString(this.state.textEncoded);
+    Toast.show({
+      text: "Text copied to clipboard !",
+      buttonText: "Ok",
+      type: "success",
+      duration: 1500,
+    });
   };
 
   render() {
@@ -105,7 +145,7 @@ export default class Encode extends Component<EncodeProps, EncodeStates> {
 
           <Grid style={{ alignItems: "center" }}>
             <Col>
-              <Button iconLeft>
+              <Button iconLeft onPress={() => this.copy()}>
                 <Icon type="MaterialIcons" name="content-copy" />
                 <Text>Copy</Text>
               </Button>
