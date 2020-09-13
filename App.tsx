@@ -16,6 +16,8 @@ export interface AppProps {}
 export interface AppStates {
   isReady: boolean;
   screen: string;
+  latinText: string;
+  morseText: string;
 }
 export default class App extends React.Component<AppProps, AppStates> {
   constructor(props: AppProps) {
@@ -23,6 +25,8 @@ export default class App extends React.Component<AppProps, AppStates> {
     this.state = {
       isReady: false,
       screen: "",
+      latinText: "",
+      morseText: "",
     };
   }
 
